@@ -260,7 +260,7 @@ public class ControladorPrincipal {
 	        return "profile";
 	    }
 	    usuarioService.actualizarUsuario(usuario);
-	    return "/profile";
+	    return "profile";
 	}
 	
     /**
