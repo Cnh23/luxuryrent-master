@@ -625,7 +625,7 @@ public class ControladorPrincipal {
 	        List<Vehiculos> vehiculos = objectMapper.readValue(vehiculosNode.toString(), new TypeReference<List<Vehiculos>>() {});
 	                // Agrega el vehículo como un nuevo registro en la base de datos
 	        vehiculosRepositorio.saveAll(vehiculos);
-	        return "dashboard";
+	        return "redirect:/dashboard";
 	    }else {
 	        return "redirect:/vehicles?error=Archivo vacío";
 	    }
