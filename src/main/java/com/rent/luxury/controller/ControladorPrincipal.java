@@ -143,7 +143,7 @@ public class ControladorPrincipal {
      * @return La vista "iniciarsesion" que muestra la página de inicio de sesión.
      */
 	@GetMapping("/iniciarsesion")
-	public String getInicioSesion(UsuariosForm usuForm) {
+	public String getInicioSesion(UsuariosForm usuForm, Model modelo) {
 		return "/iniciarsesion";
 	}
 	
