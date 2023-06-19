@@ -312,7 +312,7 @@ public class ControladorPrincipal {
 	
 	@GetMapping("/about")
 	public String getInfo(UsuariosForm usuForm) {
-		return "/about";
+		return "about";
 	}
 	
 	/**
@@ -324,7 +324,7 @@ public class ControladorPrincipal {
 	 */
 	@GetMapping("/services")
 	public String getSericios(UsuariosForm usuForm) {
-		return "/services";
+		return "services";
 	}
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	/**
@@ -361,7 +361,7 @@ public class ControladorPrincipal {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	@GetMapping("/register")
 	public String getRegistro(UsuariosForm usuForm) {
-		return "/register";
+		return "register";
 	}
 	
 	/**
@@ -378,7 +378,7 @@ public class ControladorPrincipal {
 	public String checkregistro(@Valid UsuariosForm usuForm, BindingResult bindingResult, HttpSession session,
 			Model modelo) {
 		if (bindingResult.hasErrors()) {
-			return "/registro";
+			return "register";
 		}
 		Role rol = rolesRepositorio.findByNombrerol("CLIENTE");
 		Usuarios usuario = new Usuarios(usuForm.getNombre(), usuForm.getApellidos(), usuForm.getDni(), usuForm.getDireccion(),
@@ -386,11 +386,11 @@ public class ControladorPrincipal {
 		usuariosRepositorio.save(usuario);
 		modelo.addAttribute("mensaje", "Gracias por registrarte, " + usuForm.getNombre() + " " + usuForm.getApellidos()
 				+ ". Por favor, Inicie sesión con sus credenciales.");
-		return "/register";
+		return "register";
 	}
 	@GetMapping("/contactar")
 	public String getInsertarvehiculos(ContactoForm contactoForm, Model modelo) {
-		return "/contact";
+		return "contact";
 	}
 
 	/**
@@ -406,7 +406,7 @@ public class ControladorPrincipal {
 	public String checkvehiculosInfo(@Valid ContactoForm contactoForm, BindingResult bindingResult, Model modelo) {
 		if (bindingResult.hasErrors()) {
 			modelo.addAttribute("mensaje", "");
-			return "/contact";
+			return "contact";
 		}
 		Contacto contacto = new Contacto(contactoForm.getNombre(), contactoForm.getEmail(), contactoForm.getMensaje());
 		contactoRepositorio.save(contacto);
@@ -414,7 +414,7 @@ public class ControladorPrincipal {
         // Limpiar los campos
         ContactoForm nuevoContactoForm = new ContactoForm();
         modelo.addAttribute("contactoForm", nuevoContactoForm);
-		return "/contact";
+		return "contact";
 	}
 	
 	/**
@@ -526,7 +526,7 @@ public class ControladorPrincipal {
 	    List<Vehiculos> listado2 = (List<Vehiculos>) vehiculosRepositorio.findAll();
 	    model.addAttribute("listadousuarios", clientes);
 	    model.addAttribute("listadovehiculos", listado2);
-		return "/rents";
+		return "rents";
 	}
 	
 	/**
@@ -553,7 +553,7 @@ public class ControladorPrincipal {
 			usuarios = (List<Usuarios>) usuariosRepositorio.findAll();
 		}
 		modelo.addAttribute("listado", usuarios);
-		return "/users";
+		return "users";
 	}
 	
 	/**
@@ -733,7 +733,7 @@ public class ControladorPrincipal {
 		List<Role> listado = (List<Role>) rolesRepositorio.findAll();
 		if (bindingResult.hasErrors()) {
 			modelo.addAttribute("listadoroles", listado);
-			return "/insertarusuarios";
+			return "insertarusuarios";
 		}
 		modelo.addAttribute("listadoroles", listado);
 		Usuarios usuario = new Usuarios(usuForm.getNombre(), usuForm.getApellidos(), usuForm.getDni(), usuForm.getDireccion(),
