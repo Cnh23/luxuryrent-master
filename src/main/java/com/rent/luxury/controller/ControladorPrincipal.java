@@ -144,7 +144,7 @@ public class ControladorPrincipal {
      */
 	@GetMapping("/iniciarsesion")
 	public String getInicioSesion(UsuariosForm usuForm, Model modelo) {
-		return "/iniciarsesion";
+		return "iniciarsesion";
 	}
 	
     /**
