@@ -304,7 +304,7 @@ public class ControladorPrincipal {
 	    usuariosRepositorio.save(usuario);
 
 	    model.addAttribute("success", "La contraseña se ha cambiado correctamente");
-	    return "profile"; // Cambia "profile" por la vista correspondiente
+	    return "redirect:/profile"; // Cambia "profile" por la vista correspondiente
 	}
 
 	
